@@ -9,7 +9,7 @@ def pagina_inicial():
     treinos = {
         'Treino 1 - Peito': [
             'Supino reto com halteres / Crucifixso reto – 3x10',
-            'Supino inclinado com halteres – 4x10',
+            'Supino inclinado com halteres / Crucifixo inclinado – 3x10',
             'Crucifixo reto – 4x10',
             'Cross-over alto – 4x10'
         ],
