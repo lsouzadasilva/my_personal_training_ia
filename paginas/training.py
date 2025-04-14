@@ -10,7 +10,6 @@ def pagina_inicial():
         'Treino 1 - Peito': [
             'Supino reto / Crucifixso reto – 3x10',
             'Supino inclinado / Crucifixo inclinado – 3x10',
-            'Crucifixo reto – 4x10',
             'Cross-over alto – 4x10'
         ],
         'Treino 2 - Pernas': [
