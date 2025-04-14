@@ -12,7 +12,7 @@ def pagina_inicial():
             'Supino inclinado / Crucifixo inclinado – 3x10',
             'Cross-over alto – 4x10',
             'Fly no banco 4x10',
-            'Esteira cardio 15min',
+            'Esteira cardio 15 min'
         ],
         'Treino 2 - Pernas': [
             'Agachamento livre – 4x10',
