@@ -2,7 +2,7 @@ import streamlit as st
 
 def pagina_inicial():
     validade = '01/08/2025'
-    st.title('Personal Trainer 🏋️', divider=True)
+    st.header('Personal Trainer 🏋️', divider=True)
     st.write(f'Validade até {validade}')
     st.divider()
 
