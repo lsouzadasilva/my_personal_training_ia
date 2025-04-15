@@ -18,7 +18,10 @@ def pagina_inicial():
             'Agachamento livre – 4x10',
             'Leg press – 4x10',
             'Cadeira extensora – 4x10',
-            'Mesa flexora – 4x10'
+            'Mesa flexora – 4x10',
+            'Cadeira flexora - 4x10',
+            'Levação pelvica maquina - 4x10',
+            'Paturrilha sentado + paturrilha em pé - 3x10'
         ],
         'Treino 3 - Costas': [
             'Puxada frontal – 4x10',
