@@ -25,7 +25,7 @@ def pagina_inicial():
         ],
         'Treino 3 - Costas': [
             'Puxada frontal – 4x10',
-            'Puxada no pulley com pegada neutra ou triângulo - 4x10'
+            'Puxada no pulley com pegada neutra ou triângulo - 4x10',
             'Remada curvada – 4x10',
             'Remada unilateral com halteres - 4x10',
             'Remada baixa no cabo - 4x10'
