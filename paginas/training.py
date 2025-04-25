@@ -35,7 +35,7 @@ def pagina_inicial():
             'Rosca martelo – 4X10',
             'Rosca alternada halteres – 4X10',
             'Tríceps corda no pulley – 4X10',
-            'Tríceps testa (barra W) – 4X10',
+            'Tríceps paralela na maquina – 4X10',
             'Tríceps francês no pulley - 4x10',
             'Elevação lateral – 4x10',
             'Elevação frontal – 4x10',
