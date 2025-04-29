@@ -1,9 +1,27 @@
 import streamlit as st
 
+# def pagina_inicial():
+#     validade = '01/08/2025'
+#     st.header('Personal Trainer 🏋', divider=True)
+#     st.write(f'Validade até {validade}')
+
+
 def pagina_inicial():
     validade = '01/08/2025'
-    st.header('Personal Trainer 🏋️', divider=True)
+    
+    st.markdown(
+        f"""
+        <h1 style="display: flex; align-items: center;">
+        Personal Trainer
+            <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People%20with%20activities/Person%20Lifting%20Weights%20Medium-Dark%20Skin%20Tone.png" alt="Personal Trainer" style="width: 50px; margin-right: 10px;">
+        </h1>
+        <hr>
+        """,
+        unsafe_allow_html=True
+    )
+    
     st.write(f'Validade até {validade}')
+
 
     # Treinos disponíveis
     treinos = {
