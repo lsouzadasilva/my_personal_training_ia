@@ -19,7 +19,7 @@ def pagina_inicial():
         """,
         unsafe_allow_html=True
     )
-    st.divider()
+    st.divider("random")
     
     st.write(f'Validade até {validade}')
 
