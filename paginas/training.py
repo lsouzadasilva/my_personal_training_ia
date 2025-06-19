@@ -82,6 +82,3 @@ def pagina_inicial():
     if all(st.session_state.status_exercicios):
         if st.button('🏁 Finalizar Treino'):
             st.success(f"Parabéns! Você finalizou o treino de {treino_escolhido} 🎉")
-
-
-st.header("", divider='rainbow')
