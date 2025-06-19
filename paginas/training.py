@@ -19,6 +19,7 @@ def pagina_inicial():
         """,
         unsafe_allow_html=True
     )
+    st.divider()
     
     st.write(f'Validade até {validade}')
 
