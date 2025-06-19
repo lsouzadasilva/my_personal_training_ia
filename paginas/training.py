@@ -19,7 +19,7 @@ def pagina_inicial():
         """,
         unsafe_allow_html=True
     )
-    st.header('',dividir="rainbow")
+    st.header("", divider='rainbow')
     
     st.write(f'Validade até {validade}')
 
