@@ -5,7 +5,8 @@ def pagina_inicial():
     
     st.markdown(
     """
-    <h1 style="background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+    <h1 style="
+        background: linear-gradient(to right, #ff00ff, #00ffff, #00ffea, #ff00aa, #ff0055);
                 -webkit-background-clip: text;
                 color: transparent;
                 display: flex; align-items: center;">
