@@ -11,7 +11,7 @@ def pagina_inicial():
     
     st.markdown(
     """
-    ##:green[My Training]##
+    :red[**My Training**]
     <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People%20with%20activities/Person%20Lifting%20Weights%20Medium-Dark%20Skin%20Tone.png" style="width:50px">
     """, 
     unsafe_allow_html=True
