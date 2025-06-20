@@ -1,25 +1,11 @@
 import streamlit as st
 
-# def pagina_inicial():
-#     validade = '01/08/2025'
-#     st.header('Personal Trainer 🏋', divider=True)
-#     st.write(f'Validade até {validade}')
-
-
 def pagina_inicial():
     validade = '01/08/2025'
     
-#     st.markdown(
-#     """
-#     :red[**My Training**]
-#     <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People%20with%20activities/Person%20Lifting%20Weights%20Medium-Dark%20Skin%20Tone.png" style="width:50px">
-#     """, 
-#     unsafe_allow_html=True
-# )
-
     st.markdown(
     """
-    <h1 style="background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+    <h1 style="background: linear-gradient(to right, red, red, yellow, green, blue, indigo, violet);
                 -webkit-background-clip: text;
                 color: transparent;
                 display: flex; align-items: center;">
