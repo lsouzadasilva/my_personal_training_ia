@@ -6,3 +6,4 @@ plotly
 streamlit_option_menu
 langchain
 langchain-openai
+langchain-community
