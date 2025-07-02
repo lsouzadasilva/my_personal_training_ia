@@ -136,7 +136,7 @@ def pagina_inicial():
                     st.dataframe(
                         df_tabela[["Data", "Usuário", "Treino"]]
                             .sort_values("Data", ascending=False)
-                            .reset_index(drop=True), # <- reseta índice aqui
+                            .reset_index(drop=True),  # Aqui remove o índice original
                         use_container_width=True
                     )
             else:
