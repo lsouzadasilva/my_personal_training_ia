@@ -134,7 +134,8 @@ def pagina_inicial():
 
                     st.markdown(f"### 🗂️ Histórico de {filtro_tabela}")
                     st.dataframe(
-                        df_tabela[["Data", "Usuário", "Treino"]].sort_values("Data", ascending=False),
+                        df_tabela[["Data", "Usuário", "Treino"]].sort_values("Data", ascending=False)
+                        .reset_index(drop=True), # <- reseta índice aqui
                         use_container_width=True
                     )
             else:
