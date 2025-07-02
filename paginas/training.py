@@ -12,9 +12,13 @@ def autenticar_gsheets():
         "https://www.googleapis.com/auth/drive"
     ]
     creds_dict = dict(st.secrets["google_service_account"])
+    if "private_key" in creds_dict:
+        creds_dict["private_key"] = creds_dict["private_key"].replace("\\n", "\n")
+
     creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
     client = gspread.authorize(creds)
     return client
+
 
 # -------- Carregar dados da aba Treinos --------
 def carregar_treinos(sheet):
