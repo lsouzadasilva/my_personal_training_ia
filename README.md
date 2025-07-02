@@ -100,5 +100,3 @@ universe_domain = "googleapis.com"
 - [Gerenciar Secrets no Streamlit](https://docs.streamlit.io/streamlit-cloud/secrets-management)
 
 ---
-
-Se quiser, posso ajudar a criar exemplos de código para facilitar ainda mais o uso!
