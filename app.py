@@ -4,6 +4,7 @@ import yaml
 from yaml.loader import SafeLoader
 from streamlit_option_menu import option_menu
 from paginas.training import pagina_inicial
+from paginas.agent import main
 
 
 
@@ -49,8 +50,8 @@ if st.session_state["authentication_status"]:
     with st.sidebar:
         paginas = option_menu(
         menu_title = "Menu",
-        options = ["My Trainnig"],
-        icons = ["activity"],
+        options = ["My Trainnig", "Agente Inteligente"],
+        icons = ["activity", "robot"],
         menu_icon ="cast",
         default_index = 0
         # orientation = "horizontal"  < - Agora
@@ -66,6 +67,8 @@ if st.session_state["authentication_status"]:
 
     if paginas == "My Trainnig":
         pagina_inicial()
+    elif paginas == "Agente Inteligente":
+        main()
 
 
 elif st.session_state["authentication_status"] is False:
