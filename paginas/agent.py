@@ -11,18 +11,20 @@ def autenticar_gsheets():
         "https://spreadsheets.google.com/feeds",
         "https://www.googleapis.com/auth/drive"
     ]
+    secret = st.secrets["google_service_account"]  # <- pega o bloco todo
+    
     credentials_dict = {
-        "type": st.secrets["type"],
-        "project_id": st.secrets["project_id"],
-        "private_key_id": st.secrets["private_key_id"],
-        "private_key": st.secrets["private_key"].replace("\\n", "\n"),
-        "client_email": st.secrets["client_email"],
-        "client_id": st.secrets["client_id"],
-        "auth_uri": st.secrets["auth_uri"],
-        "token_uri": st.secrets["token_uri"],
-        "auth_provider_x509_cert_url": st.secrets["auth_provider_x509_cert_url"],
-        "client_x509_cert_url": st.secrets["client_x509_cert_url"],
-        "universe_domain": st.secrets.get("universe_domain", "googleapis.com")
+        "type": secret["type"],
+        "project_id": secret["project_id"],
+        "private_key_id": secret["private_key_id"],
+        "private_key": secret["private_key"].replace("\\n", "\n"),
+        "client_email": secret["client_email"],
+        "client_id": secret["client_id"],
+        "auth_uri": secret["auth_uri"],
+        "token_uri": secret["token_uri"],
+        "auth_provider_x509_cert_url": secret["auth_provider_x509_cert_url"],
+        "client_x509_cert_url": secret["client_x509_cert_url"],
+        "universe_domain": secret.get("universe_domain", "googleapis.com")
     }
 
     creds = Credentials.from_service_account_info(credentials_dict, scopes=scope)
