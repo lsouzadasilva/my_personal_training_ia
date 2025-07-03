@@ -114,16 +114,24 @@ def pagina_inicial():
                     if not df_grafico.empty:
                         dados_grafico = df_grafico.groupby("Treino").size().reset_index(name="Quantidade")
 
-                        fig = px.bar(
+                        # fig = px.bar(
+                        #     dados_grafico,
+                        #     x="Treino",
+                        #     y="Quantidade",
+                        #     color="Treino",
+                        #     title=f"Treinos realizados em {filtro_grafico}",
+                        #     labels={"Quantidade": "Quantidade"},
+                        #     text_auto=True,
+                        #     # orientation='h'  -> Para deixar horizontal
+                        # )
+                        fig = px.pie(
                             dados_grafico,
-                            x="Treino",
-                            y="Quantidade",
-                            color="Treino",
+                            names="Treino",
+                            values="Quantidade",
+                            hole=0.5,
                             title=f"Treinos realizados em {filtro_grafico}",
-                            labels={"Quantidade": "Quantidade"},
-                            text_auto=True,
-                            # orientation='h'  -> Para deixar horizontal
                         )
+                            
                         st.plotly_chart(fig, use_container_width=True)
                     else:
                         st.info("Nenhum treino encontrado neste mês.")
