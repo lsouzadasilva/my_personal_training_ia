@@ -131,7 +131,13 @@ def pagina_inicial():
                             values="Quantidade",
                             hole=0.5,
                             title=f"Treinos realizados em {filtro_grafico}",
-                        )
+                            color="Treino",
+                            color_discrete_map={
+                                'Treino 1 - Peito':'lightcyan',
+                                 'Treino 2 - Pernas':'cyan',
+                                 'Treino 3 - Costas':'royalblue',
+                                 'Treino 4 - membros inferiores':'darkblue'}
+                            ) 
                             
                         st.plotly_chart(fig, use_container_width=True)
                     else:
