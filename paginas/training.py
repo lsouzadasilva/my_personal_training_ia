@@ -124,6 +124,7 @@ def pagina_inicial():
                         #     text_auto=True,
                         #     # orientation='h'  -> Para deixar horizontal
                         # )
+                        
                         fig = px.pie(
                             dados_grafico,
                             names="Treino",
