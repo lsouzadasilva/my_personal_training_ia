@@ -121,7 +121,8 @@ def pagina_inicial():
                             color="Treino",
                             title=f"Treinos realizados em {filtro_grafico}",
                             labels={"Quantidade": "Quantidade"},
-                            text_auto=True
+                            text_auto=True,
+                            orientation='h'
                         )
                         st.plotly_chart(fig, use_container_width=True)
                     else:
