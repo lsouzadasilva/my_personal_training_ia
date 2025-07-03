@@ -135,7 +135,7 @@ def pagina_inicial():
                             color_discrete_map={
                                 'Treino 1 - Peito':'lightcyan',
                                  'Treino 2 - Pernas':'cyan',
-                                 'Treino 3 - Costas':'#ff00ff',
+                                 'Treino 3 - Costas':'royalblue',
                                  'Treino 4 - membros inferiores':'darkblue'}
                             ) 
                             
