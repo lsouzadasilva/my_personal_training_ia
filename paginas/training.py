@@ -166,11 +166,18 @@ def pagina_inicial():
                 df_hist["AnoMes"] = df_hist["Data"].dt.strftime("%Y-%m")  # <-- Aqui garantimos o formato AAAA-MM
 
                 anos_disponiveis = sorted(df_hist["Ano"].unique(), reverse=True)
-                filtro_ano = st.selectbox("📆 Selecione o Ano:", anos_disponiveis, key="filtro_ano_tab3")
+                treino_disponiveis = sorted(df_hist["Treino"].unique()) #-*
                 
-                treino_dispponiveis = sorted(df_hist["Treino"].unique(), reverse=True)
+                filtro_ano = st.selectbox("📆 Selecione o Ano:", anos_disponiveis, key="filtro_ano_tab3")
+                filtro_treino = st.multiselect("💪 Selecione o(s) Treino(s):", treino_disponiveis, key="filtro_treino_tab3")
+                
+                treino_dispponiveis = sorted(df_hist["Treino"].unique(), reverse=True) #-*
 
                 df_filtrado = df_hist[df_hist["Ano"] == filtro_ano]
+
+                 # 🔧 Corrigido: aplica o filtro apenas se o usuário selecionou algo
+                if filtro_treino:
+                    df_filtrado = df_filtrado[df_filtrado["Treino"].isin(filtro_treino)] # -*
 
                 if not df_filtrado.empty:
                     df_agrupado = (
