@@ -171,6 +171,7 @@ def pagina_inicial():
                 filtro_treino = st.multiselect("💪 Selecione o treino:", treino_dispponiveis, key="filtro_treino_tab3")
 
                 df_filtrado = df_hist[df_hist["Ano"] == filtro_ano]
+                df_filtrado = df_hist[df_hist["Treino"] == filtro_treino]
 
                 if not df_filtrado.empty:
                     df_agrupado = (
