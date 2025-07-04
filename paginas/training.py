@@ -183,18 +183,21 @@ def pagina_inicial():
 
                     fig_bar = px.bar(
                         df_agrupado,
-                        x="AnoMes",  # <-- Eixo X como AAAA-MM
+                        x=df_agrupado["AnoMes"].astype(str),  # <-- Força a string AAAA-MM
                         y="Quantidade",
                         title=f"Total de Treinos por Mês em {filtro_ano}",
-                        labels={"AnoMes": "Mês", "Quantidade": "Qtd. de Treinos"},
+                        labels={"AnoMes": "Mês (AAAA-MM)", "Quantidade": "Qtd. de Treinos"},
                         text_auto=True,
                         color="Quantidade",
                         color_continuous_scale="Blues"
                     )
+
                     fig_bar.update_layout(
                         xaxis_title="Mês (AAAA-MM)",
-                        xaxis_tickangle=-45
+                        xaxis_tickangle=-45,
+                        xaxis_type='category'  # <-- Força o X como categoria, não data
                     )
+
 
                     st.plotly_chart(fig_bar, use_container_width=True)
                 else:
