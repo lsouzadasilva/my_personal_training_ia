@@ -166,6 +166,9 @@ def pagina_inicial():
 
                 anos_disponiveis = sorted(df_hist["Ano"].unique(), reverse=True)
                 filtro_ano = st.selectbox("📆 Selecione o Ano:", anos_disponiveis, key="filtro_ano_tab3")
+                
+                treino_dispponiveis = sorted(df_hist["Treino"].unique(), reverse=True)
+                filtro_treino = st.multiselect("💪 Selecione o treino:", treino_dispponiveis, key="filtro_treino_tab3")
 
                 df_filtrado = df_hist[df_hist["Ano"] == filtro_ano]
 
