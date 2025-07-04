@@ -97,6 +97,7 @@ def pagina_inicial():
         tab1, tab2, tab3 = st.tabs(["📊 Gráfico de Treinos", "📋 Tabela Detalhada", "🗂️ Historico de Treino"])
 
         historico_dados = aba_historico.get_all_records()
+
         if historico_dados:
             df_hist = pd.DataFrame(historico_dados)
 
@@ -114,17 +115,6 @@ def pagina_inicial():
                     if not df_grafico.empty:
                         dados_grafico = df_grafico.groupby("Treino").size().reset_index(name="Quantidade")
 
-                        # fig = px.bar(
-                        #     dados_grafico,
-                        #     x="Treino",
-                        #     y="Quantidade",
-                        #     color="Treino",
-                        #     title=f"Treinos realizados em {filtro_grafico}",
-                        #     labels={"Quantidade": "Quantidade"},
-                        #     text_auto=True,
-                        #     # orientation='h'  -> Para deixar horizontal
-                        # )
-                        
                         fig = px.pie(
                             dados_grafico,
                             names="Treino",
@@ -134,11 +124,11 @@ def pagina_inicial():
                             color="Treino",
                             color_discrete_map={
                                 'Treino 1 - Peito':'lightcyan',
-                                 'Treino 2 - Pernas':'cyan',
-                                 'Treino 3 - Costas':'royalblue',
-                                 'Treino 4 - membros inferiores':'darkblue'}
-                            ) 
-                            
+                                'Treino 2 - Pernas':'cyan',
+                                'Treino 3 - Costas':'royalblue',
+                                'Treino 4 - membros inferiores':'darkblue'
+                            } 
+                        )
                         st.plotly_chart(fig, use_container_width=True)
                     else:
                         st.info("Nenhum treino encontrado neste mês.")
@@ -152,17 +142,24 @@ def pagina_inicial():
                     st.dataframe(
                         df_tabela[["Data", "Usuário", "Treino"]]
                             .sort_values("Data", ascending=False)
-                            .reset_index(drop=True),  # Aqui remove o índice original
+                            .reset_index(drop=True),
                         use_container_width=True
                     )
             else:
                 st.warning("A aba 'Historico' está sem a coluna 'Data'. Corrija manualmente no Google Sheets.")
         else:
             st.info("Nenhum treino registrado ainda.")
-            
-            with tab3:
-                st.subheader("📅 Histórico Geral de Treinos por Mês")
 
+        # ---------- Aba 3: Histórico Geral ----------
+        with tab3:
+            st.subheader("📅 Histórico Geral de Treinos por Mês")
+
+            if not historico_dados:
+                st.info("Nenhum treino registrado ainda.")
+            else:
+                df_hist = pd.DataFrame(historico_dados)
+                df_hist["Data"] = pd.to_datetime(df_hist["Data"], errors='coerce')
+                df_hist = df_hist.dropna(subset=["Data"])
                 df_hist["Ano"] = df_hist["Data"].dt.year
                 df_hist["AnoMes"] = df_hist["Data"].dt.to_period("M").astype(str)
 
@@ -179,6 +176,10 @@ def pagina_inicial():
                         .sort_values("AnoMes")
                     )
 
+                    # -------- Cálculo da média mensal --------
+                    media = df_agrupado["Quantidade"].mean()
+                    st.caption(f"📊 Média mensal de treinos em {filtro_ano}: **{media:.1f} treinos**")
+
                     fig_bar = px.bar(
                         df_agrupado,
                         x="AnoMes",
@@ -194,8 +195,6 @@ def pagina_inicial():
                     st.plotly_chart(fig_bar, use_container_width=True)
                 else:
                     st.info(f"Nenhum treino encontrado para o ano {filtro_ano}.")
-
-                
 
     except Exception as e:
         st.error(f"Erro ao conectar com o Google Sheets: {e}")
