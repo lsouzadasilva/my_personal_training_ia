@@ -161,7 +161,8 @@ def pagina_inicial():
                 df_hist["Data"] = pd.to_datetime(df_hist["Data"], errors='coerce')
                 df_hist = df_hist.dropna(subset=["Data"])
                 df_hist["Ano"] = df_hist["Data"].dt.year
-                df_hist["AnoMes"] = df_hist["Data"].dt.to_period("M").astype(str)
+                # df_hist["AnoMes"] = df_hist["Data"].dt.to_period("M").astype(str)
+                df_hist["AnoMes"] = pd.to_datetime(df_hist['AnoMes'], format='%Y-%m')
 
                 anos_disponiveis = sorted(df_hist["Ano"].unique(), reverse=True)
                 filtro_ano = st.selectbox("📆 Selecione o Ano:", anos_disponiveis, key="filtro_ano_tab3")
