@@ -151,6 +151,7 @@ def pagina_inicial():
             st.info("Nenhum treino registrado ainda.")
 
         # ---------- Aba 3: Histórico Geral ----------
+                # ---------- Aba 3: Histórico Geral ----------
         with tab3:
             st.subheader("📅 Histórico Geral de Treinos por Mês")
 
@@ -161,8 +162,7 @@ def pagina_inicial():
                 df_hist["Data"] = pd.to_datetime(df_hist["Data"], errors='coerce')
                 df_hist = df_hist.dropna(subset=["Data"])
                 df_hist["Ano"] = df_hist["Data"].dt.year
-                # df_hist["AnoMes"] = df_hist["Data"].dt.to_period("M").astype(str)
-                df_hist["AnoMes"] = pd.to_datetime(df_hist['AnoMes'], format='%Y-%m')
+                df_hist["AnoMes"] = df_hist["Data"].dt.strftime("%Y-%m")  # <-- Aqui garantimos o formato AAAA-MM
 
                 anos_disponiveis = sorted(df_hist["Ano"].unique(), reverse=True)
                 filtro_ano = st.selectbox("📆 Selecione o Ano:", anos_disponiveis, key="filtro_ano_tab3")
@@ -183,7 +183,7 @@ def pagina_inicial():
 
                     fig_bar = px.bar(
                         df_agrupado,
-                        x="AnoMes",
+                        x="AnoMes",  # <-- Eixo X como AAAA-MM
                         y="Quantidade",
                         title=f"Total de Treinos por Mês em {filtro_ano}",
                         labels={"AnoMes": "Mês", "Quantidade": "Qtd. de Treinos"},
@@ -191,11 +191,15 @@ def pagina_inicial():
                         color="Quantidade",
                         color_continuous_scale="Blues"
                     )
-                    fig_bar.update_layout(xaxis_tickangle=-45)
+                    fig_bar.update_layout(
+                        xaxis_title="Mês (AAAA-MM)",
+                        xaxis_tickangle=-45
+                    )
 
                     st.plotly_chart(fig_bar, use_container_width=True)
                 else:
                     st.info(f"Nenhum treino encontrado para o ano {filtro_ano}.")
+
 
     except Exception as e:
         st.error(f"Erro ao conectar com o Google Sheets: {e}")
