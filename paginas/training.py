@@ -175,7 +175,7 @@ def pagina_inicial():
 
                 if not df_filtrado.empty:
                     df_agrupado = (
-                        df_filtrado.groupby("AnoMes")
+                        df_filtrado.groupby(["AnoMes", "Treino"])
                         .size()
                         .reset_index(name="Quantidade")
                         .sort_values("AnoMes")
