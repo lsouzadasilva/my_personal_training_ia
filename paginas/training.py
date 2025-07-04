@@ -206,60 +206,60 @@ def pagina_inicial():
         #             st.info(f"Nenhum treino encontrado para o ano {filtro_ano}.")
 
     with tab3:
-    st.subheader("📅 Histórico Geral de Treinos por Mês")
-
-    if not historico_dados:
-        st.info("Nenhum treino registrado ainda.")
-    else:
-        df_hist = pd.DataFrame(historico_dados)
-        df_hist["Data"] = pd.to_datetime(df_hist["Data"], errors='coerce')
-        df_hist = df_hist.dropna(subset=["Data"])
-        df_hist["Ano"] = df_hist["Data"].dt.year
-        df_hist["AnoMes"] = df_hist["Data"].dt.strftime("%Y-%m")
-
-        anos_disponiveis = sorted(df_hist["Ano"].unique(), reverse=True)
-        treino_disponiveis = sorted(df_hist["Treino"].unique())
-
-        filtro_ano = st.selectbox("📆 Selecione o Ano:", anos_disponiveis, key="filtro_ano_tab3")
-        filtro_treino = st.multiselect("💪 Selecione o(s) Treino(s):", treino_disponiveis, key="filtro_treino_tab3")
-
-        df_filtrado = df_hist[df_hist["Ano"] == filtro_ano]
-
-        # 🔧 Corrigido: aplica o filtro apenas se o usuário selecionou algo
-        if filtro_treino:
-            df_filtrado = df_filtrado[df_filtrado["Treino"].isin(filtro_treino)]
-
-        if not df_filtrado.empty:
-            df_agrupado = (
-                df_filtrado.groupby("AnoMes")
-                .size()
-                .reset_index(name="Quantidade")
-                .sort_values("AnoMes")
-            )
-
-            media = df_agrupado["Quantidade"].mean()
-            st.caption(f"📊 Média mensal de treinos em {filtro_ano}: **{media:.1f} treinos**")
-
-            fig_bar = px.bar(
-                df_agrupado,
-                x=df_agrupado["AnoMes"].astype(str),
-                y="Quantidade",
-                title=f"Total de Treinos por Mês em {filtro_ano}",
-                labels={"AnoMes": "Mês (AAAA-MM)", "Quantidade": "Qtd. de Treinos"},
-                text_auto=True,
-                color="Quantidade",
-                color_continuous_scale="Blues"
-            )
-
-            fig_bar.update_layout(
-                xaxis_title="Mês (AAAA-MM)",
-                xaxis_tickangle=-45,
-                xaxis_type='category'
-            )
-
-            st.plotly_chart(fig_bar, use_container_width=True)
+        st.subheader("📅 Histórico Geral de Treinos por Mês")
+    
+        if not historico_dados:
+            st.info("Nenhum treino registrado ainda.")
         else:
-            st.info("Nenhum treino encontrado com os filtros selecionados.")
+            df_hist = pd.DataFrame(historico_dados)
+            df_hist["Data"] = pd.to_datetime(df_hist["Data"], errors='coerce')
+            df_hist = df_hist.dropna(subset=["Data"])
+            df_hist["Ano"] = df_hist["Data"].dt.year
+            df_hist["AnoMes"] = df_hist["Data"].dt.strftime("%Y-%m")
+    
+            anos_disponiveis = sorted(df_hist["Ano"].unique(), reverse=True)
+            treino_disponiveis = sorted(df_hist["Treino"].unique())
+    
+            filtro_ano = st.selectbox("📆 Selecione o Ano:", anos_disponiveis, key="filtro_ano_tab3")
+            filtro_treino = st.multiselect("💪 Selecione o(s) Treino(s):", treino_disponiveis, key="filtro_treino_tab3")
+    
+            df_filtrado = df_hist[df_hist["Ano"] == filtro_ano]
+    
+            # 🔧 Corrigido: aplica o filtro apenas se o usuário selecionou algo
+            if filtro_treino:
+                df_filtrado = df_filtrado[df_filtrado["Treino"].isin(filtro_treino)]
+    
+            if not df_filtrado.empty:
+                df_agrupado = (
+                    df_filtrado.groupby("AnoMes")
+                    .size()
+                    .reset_index(name="Quantidade")
+                    .sort_values("AnoMes")
+                )
+    
+                media = df_agrupado["Quantidade"].mean()
+                st.caption(f"📊 Média mensal de treinos em {filtro_ano}: **{media:.1f} treinos**")
+    
+                fig_bar = px.bar(
+                    df_agrupado,
+                    x=df_agrupado["AnoMes"].astype(str),
+                    y="Quantidade",
+                    title=f"Total de Treinos por Mês em {filtro_ano}",
+                    labels={"AnoMes": "Mês (AAAA-MM)", "Quantidade": "Qtd. de Treinos"},
+                    text_auto=True,
+                    color="Quantidade",
+                    color_continuous_scale="Blues"
+                )
+    
+                fig_bar.update_layout(
+                    xaxis_title="Mês (AAAA-MM)",
+                    xaxis_tickangle=-45,
+                    xaxis_type='category'
+                )
+    
+                st.plotly_chart(fig_bar, use_container_width=True)
+            else:
+                st.info("Nenhum treino encontrado com os filtros selecionados.")
 
 
     except Exception as e:
