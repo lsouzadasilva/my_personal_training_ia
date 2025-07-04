@@ -163,7 +163,7 @@ def pagina_inicial():
                 df_hist["Data"] = pd.to_datetime(df_hist["Data"], errors='coerce')
                 df_hist = df_hist.dropna(subset=["Data"])
                 df_hist["Ano"] = df_hist["Data"].dt.year
-                df_hist["AnoMes"] = df_hist["Data"].dt.strftime("%Y-%m")  # <-- Aqui garantimos o formato AAAA-MM
+                df_hist["AnoMes"] = df_hist["Data"].dt.strftime("%Y-%m") 
 
                 anos_disponiveis = sorted(df_hist["Ano"].unique(), reverse=True)
                 treino_disponiveis = sorted(df_hist["Treino"].unique()) #-*
@@ -175,7 +175,6 @@ def pagina_inicial():
 
                 df_filtrado = df_hist[df_hist["Ano"] == filtro_ano]
 
-                 # 🔧 Corrigido: aplica o filtro apenas se o usuário selecionou algo
                 if filtro_treino:
                     df_filtrado = df_filtrado[df_filtrado["Treino"].isin(filtro_treino)] # -*
 
@@ -193,7 +192,7 @@ def pagina_inicial():
 
                     fig_bar = px.bar(
                         df_agrupado,
-                        x=df_agrupado["AnoMes"].astype(str),  # <-- Força a string AAAA-MM
+                        x=df_agrupado["AnoMes"].astype(str),  
                         y="Quantidade",
                         title=f"Total de Treinos por Mês em {filtro_ano}",
                         labels={"AnoMes": "Mês (AAAA-MM)", "Quantidade": "Qtd. de Treinos"},
@@ -205,7 +204,7 @@ def pagina_inicial():
                     fig_bar.update_layout(
                         xaxis_title="Mês (AAAA-MM)",
                         xaxis_tickangle=-45,
-                        xaxis_type='category'  # <-- Força o X como categoria, não data
+                        xaxis_type='category'  
                     )
 
 
