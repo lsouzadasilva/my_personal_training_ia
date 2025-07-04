@@ -94,7 +94,7 @@ def pagina_inicial():
 
         # -------- Histórico e Visualizações --------
         st.markdown("---")
-        tab1, tab2 = st.tabs(["📊 Gráfico de Treinos", "📋 Tabela Detalhada"])
+        tab1, tab2, tab3 = st.tabs(["📊 Gráfico de Treinos", "📋 Tabela Detalhada", "🗂️ Historico de Treino"])
 
         historico_dados = aba_historico.get_all_records()
         if historico_dados:
@@ -159,6 +159,43 @@ def pagina_inicial():
                 st.warning("A aba 'Historico' está sem a coluna 'Data'. Corrija manualmente no Google Sheets.")
         else:
             st.info("Nenhum treino registrado ainda.")
+            
+            with tab3:
+                st.subheader("📅 Histórico Geral de Treinos por Mês")
+
+                df_hist["Ano"] = df_hist["Data"].dt.year
+                df_hist["AnoMes"] = df_hist["Data"].dt.to_period("M").astype(str)
+
+                anos_disponiveis = sorted(df_hist["Ano"].unique(), reverse=True)
+                filtro_ano = st.selectbox("📆 Selecione o Ano:", anos_disponiveis, key="filtro_ano_tab3")
+
+                df_filtrado = df_hist[df_hist["Ano"] == filtro_ano]
+
+                if not df_filtrado.empty:
+                    df_agrupado = (
+                        df_filtrado.groupby("AnoMes")
+                        .size()
+                        .reset_index(name="Quantidade")
+                        .sort_values("AnoMes")
+                    )
+
+                    fig_bar = px.bar(
+                        df_agrupado,
+                        x="AnoMes",
+                        y="Quantidade",
+                        title=f"Total de Treinos por Mês em {filtro_ano}",
+                        labels={"AnoMes": "Mês", "Quantidade": "Qtd. de Treinos"},
+                        text_auto=True,
+                        color="Quantidade",
+                        color_continuous_scale="Blues"
+                    )
+                    fig_bar.update_layout(xaxis_tickangle=-45)
+
+                    st.plotly_chart(fig_bar, use_container_width=True)
+                else:
+                    st.info(f"Nenhum treino encontrado para o ano {filtro_ano}.")
+
+                
 
     except Exception as e:
         st.error(f"Erro ao conectar com o Google Sheets: {e}")
