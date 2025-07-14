@@ -49,7 +49,7 @@ def pagina_inicial():
     """, unsafe_allow_html=True)
 
     st.write(f'Validade até {validade}')
-    usuario = st.text_input("Digite seu nome para salvar o progresso:")
+    usuario = st.selectbox("Digite seu nome para salvar o progresso:", 'Leandro')
 
     try:
         client = autenticar_gsheets()
