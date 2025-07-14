@@ -154,8 +154,6 @@ def pagina_inicial():
                 # ---------- Aba 3: Histórico Geral ----------
     
         with tab3:
-            st.subheader("📅 Histórico Geral de Treinos por Mês")
-
             if not historico_dados:
                 st.info("Nenhum treino registrado ainda.")
             else:
