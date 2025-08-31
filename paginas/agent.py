@@ -129,7 +129,7 @@ def chat_treino():
             st.error(f"Erro ao acessar a planilha: {e}")
             return
 
-        validade = '01/08/2025'
+        validade = '01/09/2025'
 
         contexto = f"""
         Você é um assistente fitness pessoal.
