@@ -30,7 +30,7 @@ def salvar_historico(sheet, usuario, treino):
 
 # -------- Página principal --------
 def pagina_inicial():
-    validade = '01/09/2025'
+    validade = '01/12/2025'
 
     st.markdown("""
     <h1 style="
