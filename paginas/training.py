@@ -30,23 +30,29 @@ def salvar_historico(sheet, usuario, treino):
 
 # -------- Página principal --------
 def pagina_inicial():
-    validade = '01/12/2025'
-
-    st.markdown("""
-    <h1 style="
-        background: linear-gradient(to right, #ff00ff, #00ffff, #00ffea, #ff00aa, #ff0055);
-        -webkit-background-clip: text;
-        color: transparent;
-        display: flex; align-items: center;">
-        Meu Treino
-        <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People%20with%20activities/Person%20Lifting%20Weights%20Medium-Dark%20Skin%20Tone.png" 
-        style="width:50px; margin-left:10px;">
-    </h1>
-    <hr>
-    """, unsafe_allow_html=True)
-
+    usuario = st.selectbox(
+        "Selecione seu nome para salvar o progresso:",
+        ['Leandro', 'Convidado']
+    )
+    
+    validade = "31/12/2025"  # Exemplo de validade
+    
+    # Depois use a variável no HTML
+    st.markdown(f"""
+        <h1 style="
+            background: linear-gradient(to right, #ff00ff, #00ffff, #00ffea, #ff00aa, #ff0055);
+            -webkit-background-clip: text;
+            color: transparent;
+            display: flex; align-items: center;">
+            Olá, {usuario}
+            <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People%20with%20activities/Person%20Lifting%20Weights%20Medium-Dark%20Skin%20Tone.png" 
+            style="width:50px; margin-left:10px;">
+        </h1>
+        <hr>
+        """, unsafe_allow_html=True)
+    
     st.write(f'Validade até {validade}')
-    usuario = st.selectbox("Selecione seu nome para salvar o progresso:", ['Leandro'])
+    usuario = st.selectbox("Selecione seu nome para salvar o progresso:", ['Leandro', 'Convidado'])
 
     try:
         client = autenticar_gsheets()
