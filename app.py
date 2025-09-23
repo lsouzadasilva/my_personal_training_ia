@@ -17,7 +17,7 @@ st.set_page_config(
 hide_st_style = """
             <style>
             #MainMenu {visibility: hidden;}
-            header {visibility: hidden;}
+            # header {visibility: hidden;}
             </style>
             """
 st.markdown(hide_st_style, unsafe_allow_html=True)
@@ -75,5 +75,6 @@ elif st.session_state["authentication_status"] is False:
     st.error('Usuário/Senha inválido')
 elif st.session_state["authentication_status"] is None:
     st.warning('Por Favor, utilize seu usuário e senha!')
+
 
 
