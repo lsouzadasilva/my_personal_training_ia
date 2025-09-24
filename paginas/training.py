@@ -45,8 +45,6 @@ def pagina_inicial():
             color: transparent;
             display: flex; align-items: center;">
             Bem Vindo, {usuario}
-            #<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People%20with%20activities/Person%20Lifting%20Weights%20Medium-Dark%20Skin%20Tone.png" 
-            style="width:50px; margin-left:10px;">
         </h1>
         <hr>
         """, unsafe_allow_html=True)
