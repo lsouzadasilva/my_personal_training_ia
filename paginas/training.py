@@ -44,8 +44,8 @@ def pagina_inicial():
             -webkit-background-clip: text;
             color: transparent;
             display: flex; align-items: center;">
-            Olá, {usuario}
-            <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People%20with%20activities/Person%20Lifting%20Weights%20Medium-Dark%20Skin%20Tone.png" 
+            Bem Vindo, {usuario}
+            #<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People%20with%20activities/Person%20Lifting%20Weights%20Medium-Dark%20Skin%20Tone.png" 
             style="width:50px; margin-left:10px;">
         </h1>
         <hr>
