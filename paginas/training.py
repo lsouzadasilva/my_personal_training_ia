@@ -44,7 +44,7 @@ def pagina_inicial():
             -webkit-background-clip: text;
             color: transparent;
             display: flex; align-items: center;">
-            Bem vindo, {usuario}
+            Olá, {usuario}
         </h1>
         <hr>
         """, unsafe_allow_html=True)
