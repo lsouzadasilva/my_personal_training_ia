@@ -30,10 +30,7 @@ def salvar_historico(sheet, usuario, treino):
 
 # -------- Página principal --------
 def pagina_inicial():
-    usuario = st.selectbox(
-        "Selecione seu nome para salvar o progresso:",
-        ['Leandro', 'Convidado']
-    )
+    usuario = st.session_state.get("name", "Convidado")
     
     validade = "31/12/2025"  # Exemplo de validade
     
