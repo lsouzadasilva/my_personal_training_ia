@@ -1,7 +1,7 @@
 import streamlit as st
 import gspread
 from google.oauth2.service_account import Credentials
-from langchain.chat_models import ChatOpenAI
+from langchain_openai import ChatOpenAI
 from datetime import datetime
 import time
 
