@@ -153,7 +153,9 @@ def chat_treino():
         )
 
         with st.spinner("Pensando..."):
-            resposta = llm.predict(prompt_final)
+            # resposta = llm.predict(prompt_final).content
+            resposta = llm.invoke(prompt_final).content
+
 
         st.session_state.chat_history.append((pergunta, resposta))
 
