@@ -32,7 +32,7 @@ def salvar_historico(sheet, usuario, treino):
 def pagina_inicial():
     usuario = st.session_state.get("name", "Convidado")
     
-    validade = "31/12/2025"  # Exemplo de validade
+    validade = "01/06/2026"  # Exemplo de validade
     
     # Depois use a variável no HTML
     st.markdown(f"""
